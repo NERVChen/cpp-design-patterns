@@ -6,24 +6,11 @@ class Singleton
 {
 private:
 	Singleton(){}	
-	static  Singleton *m_pInstance;//point to the 
-	class CGarbo
-	{
-	public:
-		~CGarbo()
-		{
-			if(Singleton::m_pInstance!=nullptr)
-				std::cout<<"delet"<<std::endl;
-				delete Singleton::m_pInstance;
-		}
-	};
-	static CGarbo Garbo;
 public:
-	static Singleton* GetInstance()
+	static Singleton& GetInstance()
 	{
-		if(m_pInstance == nullptr)
-			m_pInstance = new Singleton();
-		return m_pInstance;
+		static Singleton instance;
+		return instance;
 	}
 };
 #endif
